@@ -8,7 +8,7 @@ This project is built with [Nuxt.js](https://nuxt.com/), [Tailwind CSS](https://
 
 ## Project Setup
 
-### Library Versioning
+### Versioning
 
 - **Node.js:** v21.7.1
 - **npm:** 10.8.2
@@ -19,6 +19,9 @@ This project is built with [Nuxt.js](https://nuxt.com/), [Tailwind CSS](https://
 - **Vuex:** 3.6.2
 - **Tailwind CSS:** 3.4.7
 - **gh-pages:** 6.1.1
+- **vue-scrollto:** 2.20.0
+
+The full list of packages/libraries and their versioning can be found in the `package.json` file in the main directory.
 
 ### Installation
 
@@ -32,6 +35,32 @@ This project is built with [Nuxt.js](https://nuxt.com/), [Tailwind CSS](https://
    ```
    cd federated-shelby.github.io
    ```
+
+### Contribution Guidelines
+
+> IMPORTANT: Please read the following before contributing to this project
+
+#### Branch naming conventions:
+
+A git branch should start with a category.
+Pick one of these: `feature`, `bugfix`, `test`, or `docs`.
+
+- `feature` is for adding, refactoring or removing a feature
+- `bugfix` is for fixing a bug
+- `test` is for creating/modifying test code (Jest)
+- `docs` is for creating/modifying documentation
+
+After the category should be a short text to describe the main objective of the branch. For example, commits for creating a navbar component will be under branch `feature/navbar-component`.
+Remember to include the "/" character after the category text and use kebab-case.
+
+##### Pull requests:
+
+A pull request template has been made in `.github > pull_request_template.md`. Please follow the listed procedures and write text as needed to provide the relevant information for the pull request to be approved.
+
+##### Unit Tests:
+
+Unit tests can be made using [Jest](https://jestjs.io/).
+There are many [publicly-available online resources](https://github.com/mawrkus/js-unit-testing-guide) that may help.
 
 ### License
 
