@@ -1,33 +1,20 @@
 <template>
   <div>
-    <Navbar />
-
-    <section
-      id="home"
-      class="min-h-screen flex items-center justify-center bg-red-500"
-    >
-      <h1 class="text-4xl">Home Section</h1>
+    <section class="min-h-screen flex items-center justify-center">
+      <h1 class="text-4xl">MAIN</h1>
     </section>
 
-    <section
-      id="projects"
-      class="min-h-screen flex items-center justify-center bg-blue-500"
-    >
-      <h1 class="text-4xl">Projects Section</h1>
-    </section>
+    <Navbar :categories="categories" />
+
+    <!-- <div class="h-screen fixed top-0 bg-blue-700"></div> -->
 
     <section
-      id="skills"
-      class="min-h-screen flex items-center justify-center bg-green-500"
+      v-for="category in categories"
+      :id="category.scrollToId"
+      :key="category.id"
+      class="min-h-screen flex items-center justify-center"
     >
-      <h1 class="text-4xl">Skills Section</h1>
-    </section>
-
-    <section
-      id="contact"
-      class="min-h-screen flex items-center justify-center bg-yellow-500"
-    >
-      <h1 class="text-4xl">Contact Section</h1>
+      <h1 class="text-4xl">{{ category.name }}</h1>
     </section>
   </div>
 </template>
@@ -40,6 +27,30 @@ export default Vue.extend({
   name: 'IndexPage',
   components: {
     Navbar,
+  },
+  data() {
+    return {
+      categories: [
+        {
+          id: 1,
+          name: 'About Me',
+          href: '#aboutme',
+          scrollToId: 'aboutme',
+        },
+        {
+          id: 2,
+          name: 'Experience',
+          href: '#experience',
+          scrollToId: 'experience',
+        },
+        {
+          id: 3,
+          name: 'Projects',
+          href: '#projects',
+          scrollToId: 'projects',
+        },
+      ],
+    };
   },
 });
 </script>
