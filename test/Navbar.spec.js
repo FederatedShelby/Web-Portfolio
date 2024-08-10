@@ -2,15 +2,37 @@ import { shallowMount } from '@vue/test-utils';
 import VueScrollTo from 'vue-scrollto';
 import Navbar from '~/components/Navbar.vue';
 
-jest.mock('vue-scrollto', function scrollTo() {
-  return jest.fn();
-});
-
 describe('Navbar.vue', () => {
   let wrapper;
+  const categories = [
+    {
+      id: 1,
+      name: 'About Me',
+      href: '#aboutme',
+      scrollToId: 'aboutme',
+    },
+    {
+      id: 2,
+      name: 'Experience',
+      href: '#experience',
+      scrollToId: 'experience',
+    },
+    {
+      id: 3,
+      name: 'Projects',
+      href: '#projects',
+      scrollToId: 'projects',
+    },
+  ];
 
   beforeEach(() => {
-    wrapper = shallowMount(Navbar);
+    VueScrollTo.scrollTo = jest.fn();
+
+    wrapper = shallowMount(Navbar, {
+      propsData: {
+        categories,
+      },
+    });
   });
 
   it('renders the navbar', () => {
@@ -32,7 +54,7 @@ describe('Navbar.vue', () => {
   it('renders buttons for each section', () => {
     const buttons = wrapper.findAll('a');
     const categoriesData = wrapper.vm.categories;
-    expect(buttons.length).toBe(categoriesData.length - 1);
+    expect(buttons.length).toBe(categoriesData.length);
     buttons.wrappers.forEach((button, bIndex) => {
       const category = categoriesData[bIndex];
       expect(button.text()).toBe(category.name);
@@ -45,7 +67,7 @@ describe('Navbar.vue', () => {
     const firstButton = buttons.at(0);
     const categoriesData = wrapper.vm.categories;
     await firstButton.trigger('click');
-    expect(VueScrollTo).toHaveBeenCalledWith(
+    expect(VueScrollTo.scrollTo).toHaveBeenCalledWith(
       categoriesData[0].href,
       500,
       expect.objectContaining({
