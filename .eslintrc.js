@@ -13,7 +13,7 @@ module.exports = {
   plugins: ['jest'],
   // add your custom rules here
   rules: {
-    quotes: ['error', 'single'],
+    quotes: ['error', 'single', { avoidEscape: true }],
     // we want to force semicolons
     semi: ['error', 'always'],
     // we use 2 spaces to indent our code
