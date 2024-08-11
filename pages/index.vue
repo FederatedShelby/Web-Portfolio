@@ -1,12 +1,19 @@
 <template>
   <div>
-    <section class="min-h-screen flex items-center justify-center">
-      <h1 class="text-4xl">MAIN</h1>
+    <section class="min-h-screen flex flex-col items-center justify-center">
+      <div class="text-5xl flex flex-col items-center">
+        <span class="text-white"
+          >{{ mainTextIntroTop }}
+          <span class="text-blue-400">{{ mainTextName }}</span
+          >.
+        </span>
+        <span class="text-white mt-3">{{ mainTextIntroBottom }}</span>
+      </div>
     </section>
 
-    <Navbar :categories="categories" />
+    <ThreeBackground />
 
-    <!-- <div class="h-screen fixed top-0 bg-blue-700"></div> -->
+    <Navbar :categories="categories" />
 
     <section
       v-for="category in categories"
@@ -21,15 +28,21 @@
 
 <script lang="ts">
 import Vue from 'vue';
+// components
 import Navbar from '~/components/Navbar.vue';
+import ThreeBackground from '~/components/ThreeBackground.vue';
 
 export default Vue.extend({
   name: 'IndexPage',
   components: {
     Navbar,
+    ThreeBackground,
   },
   data() {
     return {
+      mainTextIntroTop: "Hello there, I'm",
+      mainTextName: 'Sam',
+      mainTextIntroBottom: 'I can fulfill your AI needs.',
       categories: [
         {
           id: 1,
