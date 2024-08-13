@@ -1,5 +1,5 @@
 <template>
-  <nav class="sticky top-0 w-full bg-[#E9F2F4]">
+  <nav class="sticky top-0 w-full overflow-clip bg-[#E9F2F4]">
     <div class="container mx-auto px-4 py-2 flex justify-between">
       <div class="container-md flex justify-between items-center">
         <img src="Shelby_profile_image.jpeg" class="rounded-full h-[50px]" />
@@ -35,7 +35,7 @@ export default {
     scrollTo(target) {
       VueScrollTo.scrollTo(target, 500, {
         easing: 'ease-in-out',
-        // offset: -66, // Adjust the offset value to account for fixed navbar
+        offset: -66,
       });
     },
   },

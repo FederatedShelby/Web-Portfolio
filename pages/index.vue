@@ -15,8 +15,10 @@
 
     <Navbar :categories="categories" />
 
+    <AboutMe />
+
     <section
-      v-for="category in categories"
+      v-for="category in categories.slice(1)"
       :id="category.scrollToId"
       :key="category.id"
       class="min-h-screen flex items-center justify-center"
@@ -31,17 +33,20 @@ import Vue from 'vue';
 // components
 import Navbar from '~/components/Navbar.vue';
 import ThreeBackground from '~/components/ThreeBackground.vue';
+// page sections
+import AboutMe from '~/components/sections/AboutMeSection.vue';
 
 export default Vue.extend({
   name: 'IndexPage',
   components: {
     Navbar,
     ThreeBackground,
+    AboutMe,
   },
   data() {
     return {
       mainTextIntroTop: "Hello there, I'm",
-      mainTextName: 'Sam',
+      mainTextName: 'Samuel',
       mainTextIntroBottom: 'I can fulfill your AI needs.',
       categories: [
         {
