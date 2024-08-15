@@ -17,8 +17,10 @@
 
     <AboutMe />
 
+    <Certifications />
+
     <section
-      v-for="category in categories.slice(1)"
+      v-for="category in categories.slice(2)"
       :id="category.scrollToId"
       :key="category.id"
       class="min-h-screen flex items-center justify-center"
@@ -33,8 +35,10 @@ import Vue from 'vue';
 // components
 import Navbar from '~/components/Navbar.vue';
 import ThreeBackground from '~/components/ThreeBackground.vue';
+
 // page sections
 import AboutMe from '~/components/sections/AboutMeSection.vue';
+import Certifications from '~/components/sections/CertificationsSection.vue';
 
 export default Vue.extend({
   name: 'IndexPage',
@@ -42,6 +46,7 @@ export default Vue.extend({
     Navbar,
     ThreeBackground,
     AboutMe,
+    Certifications,
   },
   data() {
     return {
@@ -57,9 +62,9 @@ export default Vue.extend({
         },
         {
           id: 2,
-          name: 'Experience',
-          href: '#experience',
-          scrollToId: 'experience',
+          name: 'Certifications',
+          href: '#certifications',
+          scrollToId: 'certifications',
         },
         {
           id: 3,
