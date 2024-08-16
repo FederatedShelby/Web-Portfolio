@@ -17,15 +17,17 @@
 
     <AboutMe />
 
+    <Experience />
+
     <Certifications />
 
     <section
-      v-for="category in categories.slice(2)"
+      v-for="category in categories.slice(-1)"
       :id="category.scrollToId"
       :key="category.id"
       class="min-h-screen flex items-center justify-center"
     >
-      <h1 class="text-4xl">{{ category.name }}</h1>
+      <h1 class="text-4xl text-white">{{ category.name }}</h1>
     </section>
   </div>
 </template>
@@ -38,6 +40,7 @@ import ThreeBackground from '~/components/ThreeBackground.vue';
 
 // page sections
 import AboutMe from '~/components/sections/AboutMeSection.vue';
+import Experience from '~/components/sections/ExperienceSection.vue';
 import Certifications from '~/components/sections/CertificationsSection.vue';
 
 export default Vue.extend({
@@ -46,6 +49,7 @@ export default Vue.extend({
     Navbar,
     ThreeBackground,
     AboutMe,
+    Experience,
     Certifications,
   },
   data() {
@@ -62,12 +66,18 @@ export default Vue.extend({
         },
         {
           id: 2,
+          name: 'Experience',
+          href: '#experience',
+          scrollToId: 'experience',
+        },
+        {
+          id: 3,
           name: 'Certifications',
           href: '#certifications',
           scrollToId: 'certifications',
         },
         {
-          id: 3,
+          id: 4,
           name: 'Projects',
           href: '#projects',
           scrollToId: 'projects',
