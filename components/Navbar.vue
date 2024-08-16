@@ -1,5 +1,5 @@
 <template>
-  <nav class="sticky top-0 w-full overflow-clip bg-[#E9F2F4]">
+  <nav class="sticky top-0 w-full overflow-clip bg-[#E9F2F4] z-10">
     <div class="container mx-auto px-4 py-2 flex justify-between">
       <div class="container-md flex justify-between items-center">
         <img src="Shelby_profile_image.jpeg" class="rounded-full h-[50px]" />
