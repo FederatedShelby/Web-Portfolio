@@ -59,6 +59,6 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
-    base: '/federated-shelby.github.io/'
+    base: '/federated-shelby.github.io/',
   },
 };
