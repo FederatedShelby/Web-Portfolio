@@ -11,7 +11,11 @@
     <!-- projects area -->
     <div class="w-full p-4 flex flex-col">
       <!-- projects base component -->
-      <div v-for="project in projectsList" :key="project.id" class="w-full p-4 flex flex-col gap-1">
+      <div
+        v-for="project in projectsList"
+        :key="project.id"
+        class="w-full p-4 flex flex-col gap-1"
+      >
         <!-- project image container -->
         <div class="h-[400px] bg-slate-100">
           <img :src="project.imgSrc" class="h-full" />
@@ -34,12 +38,14 @@
             :href="project.deploymentLink"
             target="_blank"
             class="px-1 text-white border border-lime-400 hover:text-blue-100"
-          >View Project</a>
+            >View Project</a
+          >
           <a
             :href="project.codeSourceLink"
             target="_blank"
             class="px-1 text-white border border-lime-400 hover:text-blue-100"
-          >View Code</a>
+            >View Code</a
+          >
         </div>
       </div>
     </div>
