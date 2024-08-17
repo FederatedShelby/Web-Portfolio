@@ -21,14 +21,7 @@
 
     <Certifications />
 
-    <section
-      v-for="category in categories.slice(-1)"
-      :id="category.scrollToId"
-      :key="category.id"
-      class="min-h-screen flex items-center justify-center"
-    >
-      <h1 class="text-4xl text-white">{{ category.name }}</h1>
-    </section>
+    <Projects />
   </div>
 </template>
 
@@ -42,6 +35,7 @@ import ThreeBackground from '~/components/ThreeBackground.vue';
 import AboutMe from '~/components/sections/AboutMeSection.vue';
 import Experience from '~/components/sections/ExperienceSection.vue';
 import Certifications from '~/components/sections/CertificationsSection.vue';
+import Projects from '~/components/sections/ProjectsSection.vue';
 
 export default Vue.extend({
   name: 'IndexPage',
@@ -51,6 +45,7 @@ export default Vue.extend({
     AboutMe,
     Experience,
     Certifications,
+    Projects,
   },
   data() {
     return {
