@@ -1,16 +1,18 @@
 <template>
-  <nav class="sticky top-0 w-full overflow-clip bg-[#E9F2F4] z-10">
-    <div class="container mx-auto px-4 py-2 flex justify-between">
-      <div class="container-md flex justify-between items-center">
-        <img src="Shelby_profile_image.jpeg" class="rounded-full h-[50px]" />
-        <span class="text-xl">Seong Kyu Sohn | Portfolio</span>
+  <nav class="navbar">
+    <div class="navbar__content">
+      <!-- left content area of navbar -->
+      <div class="navbar__container">
+        <img :src="profilePictureSrc" class="navbar__profile-picture" />
+        <span class="navbar__profile-text">{{ profileText }}</span>
       </div>
-      <div class="container-lg flex justify-between">
+      <!-- right content area of navbar -->
+      <div class="navbar__container">
         <a
           v-for="category in categories"
           :key="category.id"
           :href="category.href"
-          class="px-3 py-2 text-gray-800 border-2 hover:bg-lime-400"
+          class="navbar__button"
           @click="scrollTo(category.href)"
         >
           {{ category.name }}
@@ -31,6 +33,12 @@ export default {
       default: () => [],
     },
   },
+  data() {
+    return {
+      profilePictureSrc: 'Shelby_profile_image.jpeg',
+      profileText: 'Seong Kyu Sohn | Portfolio'
+    };
+  },
   methods: {
     scrollTo(target) {
       VueScrollTo.scrollTo(target, 500, {
@@ -41,3 +49,7 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+@import '~/styles/_Navbar.sass'
+</style>
