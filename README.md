@@ -18,6 +18,7 @@ This project is built with [Nuxt.js](https://nuxt.com/), [Tailwind CSS](https://
 - **Prettier:** 2.8.8
 - **Vuex:** 3.6.2
 - **Tailwind CSS:** 3.4.7
+- **SASS:** 1.77.8
 - **vue-scrollto:** 2.20.0
 
 The full list of packages/libraries and their versioning can be found in the `package.json` file in the main directory.
