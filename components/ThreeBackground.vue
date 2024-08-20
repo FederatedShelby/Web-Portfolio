@@ -251,14 +251,6 @@ export default {
 };
 </script>
 
-<style scoped>
-.three-container {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  z-index: -1;
-  overflow: hidden;
-}
+<style lang="sass" scoped>
+@import '~/styles/_ThreeBackground.sass'
 </style>
