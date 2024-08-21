@@ -1,48 +1,41 @@
 <template>
   <section id="aboutme" class="aboutme">
     <!-- section title -->
-    <h2 class="aboutme__title">
+    <h2 class="title">
       {{ sectionTitle }}
-      <div class="aboutme__title__decoration" />
+      <div class="title-decoration" />
     </h2>
     <!-- section contents -->
     <div class="aboutme__contents">
       <!-- intro text content (left side in non-mobile) -->
-      <div class="aboutme__intro-container">
+      <div class="intro-container">
         <!-- main introduction content -->
         <!-- TODO: replace img src -->
-        <img
-          src="Shelby_profile_image.jpeg"
-          class="aboutme__intro__profile-picture"
-        />
-        <div class="aboutme__intro__text-top">{{ introTextTop }}</div>
+        <img src="Shelby_profile_image.jpeg" class="intro__profile-picture" />
+        <div class="intro__text-top">{{ introTextTop }}</div>
         <!-- real world capabilities content -->
-        <div class="aboutme__intro__subsection-title">
+        <div class="intro__subsection-title">
           {{ subsectionTitle }}
         </div>
-        <div class="aboutme__intro__subsection-text">{{ subsectionText }}</div>
+        <div class="intro__subsection-text">{{ subsectionText }}</div>
         <!-- button to open resumé Google Docs link in new tab -->
-        <button class="aboutme__button-resume" @click="onClickViewResume">
+        <button class="button-resume" @click="onClickViewResume">
           {{ buttonResumeText }}
         </button>
       </div>
       <!-- skills content (right side in non-mobile) -->
-      <div class="aboutme__skills-container">
-        <div class="aboutme__skills-title">{{ skillsTitle }}</div>
-        <div class="aboutme__skills-cards-list">
-          <div
-            v-for="skill in skills"
-            :key="skill.id"
-            class="aboutme__skills-card"
-          >
-            <div class="aboutme__skills-card__image-container">
-              <img :src="skill.src" class="aboutme__skills-card__image" />
+      <div class="skills-container">
+        <div class="skills-title">{{ skillsTitle }}</div>
+        <div class="skills-cards-list">
+          <div v-for="skill in skills" :key="skill.id" class="skills-card">
+            <div class="skills-card__image-container">
+              <img :src="skill.src" class="skills-card__image" />
             </div>
-            <div class="aboutme__skills-card__text-container">
-              <div class="aboutme__skills-card__skill-name">
+            <div class="skills-card__text-container">
+              <div class="skills-card__skill-name">
                 {{ skill.text }}
               </div>
-              <div class="aboutme__skills-card__skill-yoe">
+              <div class="skills-card__skill-yoe">
                 <span class="text-blue-400">{{
                   skill.yearsOfExperience.toString()
                 }}</span>
