@@ -1,33 +1,28 @@
 <template>
   <section id="certifications" class="certifications">
     <!-- section title -->
-    <h2 class="certifications__title">
+    <h2 class="title">
       {{ sectionTitle }}
-      <div class="certifications__title__decoration" />
+      <div class="title-decoration" />
     </h2>
     <!-- certifications area -->
-    <div class="certifications__certifications-cards-list">
+    <div class="certifications-cards-list">
       <!-- certification cards -->
       <div
         v-for="cert in certificationsList"
         :key="cert.id"
-        class="certifications__certifications-card"
+        class="certifications-card"
       >
         <!-- image container -->
-        <div class="certifications__certifications-card__image-container">
-          <img
-            :src="cert.imageSrc"
-            class="certifications__certifications-card__image"
-          />
+        <div class="card__image-container">
+          <img :src="cert.imageSrc" class="card__image" />
         </div>
         <!-- certification text info -->
-        <div class="certifications__certifications-card__text-container">
-          <div class="certifications__certifications-card__text-cert-name">
+        <div class="card__text-container">
+          <div class="card-text--cert-name">
             {{ cert.certificationName }}
           </div>
-          <div
-            class="certifications__certifications-card__text-cert-date-range"
-          >
+          <div class="card-text--date-range">
             {{ cert.startDate + ' ~ ' + cert.endDate }}
           </div>
         </div>
