@@ -1,28 +1,25 @@
 <template>
-  <section
-    id="experience"
-    class="w-full flex flex-col items-center justify-around bg-transparent"
-  >
+  <section id="experience" class="experience">
     <!-- section title -->
-    <h2 class="text-5xl text-white m-4">
-      Experience
-      <div class="h-[4px] w-full bg-blue-200" />
+    <h2 class="title">
+      {{ sectionTitle }}
+      <div class="title-decoration" />
     </h2>
     <!-- experience area -->
-    <div class="p-4 flex flex-col relative">
-      <!-- experience base component -->
+    <div class="experience-cards-list">
+      <!-- experience cards -->
       <div
         v-for="exp in reversedExperienceList"
         :key="exp.id"
-        class="flex before:h-[20px] before:w-[20px] before:absolute before:left-[7px] before:rounded-full before:border-2 before:border-blue-400 before:bg-black after:h-[20px] after:w-[20px] after:absolute after:left-[7px] after:bottom-[0px] after:rounded-full after:border-2 after:border-blue-400 after:bg-black"
+        class="experience-card"
       >
-        <!-- experience container -->
-        <div
-          class="flex flex-col p-4 pl-8 text-white border-l-2 border-blue-400"
-        >
-          <div class="text-3xl text-blue-400">{{ exp.roleTitle }}</div>
-          <div class="text-2xl">{{ '@ ' + exp.employerName }}</div>
-          <div class="text-xl italics text-slate-200">
+        <!-- experience card text container -->
+        <div class="card__text-container">
+          <div class="card-text--role-title">{{ exp.roleTitle }}</div>
+          <div class="card-text--employer-name">
+            {{ '@ ' + exp.employerName }}
+          </div>
+          <div class="card-text--date-range">
             {{ exp.startDate + ' ~ ' + exp.endDate }}
           </div>
         </div>
@@ -36,6 +33,7 @@ export default {
   name: 'ExperienceComponent',
   data() {
     return {
+      sectionTitle: 'Experience',
       experienceList: [
         {
           id: 1,
@@ -87,3 +85,7 @@ export default {
   },
 };
 </script>
+
+<style lang="sass" scoped>
+@import '~/styles/sections/_ExperienceSection.sass'
+</style>
