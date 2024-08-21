@@ -60,5 +60,10 @@ export default {
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
     base: '/federated-shelby.github.io/',
+    loaders: {
+      scss: {
+        implementation: require('sass'),
+      },
+    },
   },
 };
