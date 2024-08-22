@@ -66,7 +66,7 @@ describe('Navbar.vue', () => {
       500,
       expect.objectContaining({
         easing: 'ease-in-out',
-        offset: -66,
+        offset: -44,
       })
     );
   });
