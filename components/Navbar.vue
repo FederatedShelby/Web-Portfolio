@@ -21,7 +21,11 @@
       <div class="navbar__container--right-mobile">
         <button @click.exact="toggleMenu">
           <svg
-            class="w-6 h-6 text-white"
+            class="w-6 h-6"
+            :class="{
+              'text-grey-600': !isNavbarAtTop,
+              'text-white': isNavbarAtTop,
+            }"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -68,7 +72,17 @@ export default {
       profilePictureSrc: 'Shelby_profile_image.jpeg',
       profileText: 'Samuel Sohn',
       isDropdownMenuOpen: false,
+      // minimum window.scrollY value when navbar is at the top of the page
+      scrollThreshold: 724,
+      // true if navbar is at the top of the page, based on scrollThreshold value
+      isNavbarAtTop: false,
     };
+  },
+  mounted() {
+    window.addEventListener('scroll', this.handleScroll);
+  },
+  beforeDestroy() {
+    window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
     scrollTo(target) {
@@ -79,7 +93,15 @@ export default {
       if (this.isDropdownMenuOpen) this.toggleMenu();
     },
     toggleMenu() {
-      this.isDropdownMenuOpen = !this.isDropdownMenuOpen;
+      if (this.isNavbarAtTop) {
+        this.isDropdownMenuOpen = !this.isDropdownMenuOpen;
+      }
+    },
+    handleScroll() {
+      this.isNavbarAtTop = window.scrollY >= this.scrollThreshold;
+      if (!this.isNavbarAtTop) {
+        this.isDropdownMenuOpen = false;
+      }
     },
   },
 };
