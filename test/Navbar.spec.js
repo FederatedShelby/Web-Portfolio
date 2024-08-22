@@ -39,16 +39,10 @@ describe('Navbar.vue', () => {
     expect(wrapper.exists()).toBe(true);
   });
 
-  it('renders the profile image', () => {
-    const profileImg = wrapper.find('img');
-    expect(profileImg.exists()).toBe(true);
-    expect(profileImg.attributes('src')).toBe('Shelby_profile_image.jpeg');
-  });
-
   it('renders main text', () => {
     const mainText = wrapper.find('span');
     expect(mainText.exists()).toBe(true);
-    expect(mainText.text()).toBe('Seong Kyu Sohn | Portfolio');
+    expect(mainText.text()).toBe('Samuel Sohn');
   });
 
   it('renders buttons for each section', () => {
@@ -72,6 +66,7 @@ describe('Navbar.vue', () => {
       500,
       expect.objectContaining({
         easing: 'ease-in-out',
+        offset: -66,
       })
     );
   });

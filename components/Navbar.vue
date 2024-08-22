@@ -36,7 +36,7 @@ export default {
   data() {
     return {
       profilePictureSrc: 'Shelby_profile_image.jpeg',
-      profileText: 'Seong Kyu Sohn | Portfolio',
+      profileText: 'Samuel Sohn',
     };
   },
   methods: {
