@@ -4,7 +4,7 @@ This is a publicly-available portfolio of projects and skills owned by [Federate
 
 ## Features
 
-This project is built with [Nuxt.js](https://nuxt.com/), [Tailwind CSS](https://tailwindcss.com/), [TypeScript](https://www.typescriptlang.org/), and hosted on [GitHub Pages](https://pages.github.com/).
+This project is built with [Nuxt.js](https://nuxt.com/), [Tailwind CSS](https://tailwindcss.com/), [TypeScript](https://www.typescriptlang.org/), and hosted on [Netlify](https://www.netlify.com/).
 
 ## Project Setup
 
@@ -18,7 +18,7 @@ This project is built with [Nuxt.js](https://nuxt.com/), [Tailwind CSS](https://
 - **Prettier:** 2.8.8
 - **Vuex:** 3.6.2
 - **Tailwind CSS:** 3.4.7
-- **gh-pages:** 6.1.1
+- **SASS:** 1.77.8
 - **vue-scrollto:** 2.20.0
 
 The full list of packages/libraries and their versioning can be found in the `package.json` file in the main directory.
