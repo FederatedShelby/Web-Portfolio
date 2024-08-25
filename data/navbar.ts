@@ -1,6 +1,8 @@
 // Data used to populate Navbar component
 export const navbarData: any = Object.freeze({
   // PATH:  components > Navbar.vue
+  // USAGE: populating navbar text (left)
+  profileText: 'Samuel Sohn',
   // USAGE: populating navbar section buttons
   categories: [
     {

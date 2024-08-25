@@ -13,7 +13,7 @@
 
     <ThreeBackground />
 
-    <Navbar :categories="categories" />
+    <Navbar />
 
     <AboutMe />
 
