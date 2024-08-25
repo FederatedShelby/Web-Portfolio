@@ -1,4 +1,4 @@
-// Data used at the application level
+// Data used to populate About Me section contents
 export const aboutmeData: any = Object.freeze({
   // PATH:  components > sections > AboutMeSection.vue
   // USAGE: "About Me" content
