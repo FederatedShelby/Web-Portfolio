@@ -37,6 +37,10 @@ import Experience from '~/components/sections/ExperienceSection.vue';
 import Certifications from '~/components/sections/CertificationsSection.vue';
 import Projects from '~/components/sections/ProjectsSection.vue';
 
+// data variables
+import { appData } from '~/data/app';
+import { navbarData } from '~/data/navbar';
+
 export default Vue.extend({
   name: 'IndexPage',
   components: {
@@ -49,35 +53,10 @@ export default Vue.extend({
   },
   data() {
     return {
-      mainTextIntroTop: "Hello there, I'm",
-      mainTextName: 'Samuel',
-      mainTextIntroBottom: 'I can fulfill your AI needs.',
-      categories: [
-        {
-          id: 1,
-          name: 'About Me',
-          href: '#aboutme',
-          scrollToId: 'aboutme',
-        },
-        {
-          id: 2,
-          name: 'Experience',
-          href: '#experience',
-          scrollToId: 'experience',
-        },
-        {
-          id: 3,
-          name: 'Certifications',
-          href: '#certifications',
-          scrollToId: 'certifications',
-        },
-        {
-          id: 4,
-          name: 'Projects',
-          href: '#projects',
-          scrollToId: 'projects',
-        },
-      ],
+      mainTextIntroTop: appData.mainTextIntroTop,
+      mainTextName: appData.mainTextName,
+      mainTextIntroBottom: appData.mainTextIntroBottom,
+      categories: navbarData.categories,
     };
   },
 });
