@@ -40,7 +40,7 @@ export default {
   name: 'CertificationsComponent',
   data() {
     return {
-      sectionTitle: navbarData[CATEGORIES_INDEX_CERTIFICATIONS],
+      sectionTitle: navbarData.categories[CATEGORIES_INDEX_CERTIFICATIONS].name,
       certificationsList: certificationsData.certificationsList,
     };
   },
