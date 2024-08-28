@@ -15,7 +15,13 @@
       >
         <!-- image container -->
         <div class="card__image-container">
-          <img :src="cert.imageSrc" class="card__image" />
+          <img
+            :src="cert.imageSrc"
+            class="card__image"
+            height="200"
+            width="200"
+            loading="lazy"
+          />
         </div>
         <!-- certification text info -->
         <div class="card__text-container">
