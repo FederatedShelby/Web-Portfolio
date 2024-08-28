@@ -32,21 +32,16 @@
 </template>
 
 <script>
+// data variables
+import { navbarData, CATEGORIES_INDEX_CERTIFICATIONS } from '~/data/navbar';
+import { certificationsData } from '~/data/sections/certifications';
+
 export default {
   name: 'CertificationsComponent',
   data() {
     return {
-      sectionTitle: 'Certifications',
-      certificationsList: [
-        {
-          id: 1,
-          certificationName: 'Google Professional Machine Learning Engineer',
-          certificationLink: 'https://www.google.com',
-          imageSrc: 'logo-gcp.svg',
-          startDate: 'August 2024',
-          endDate: 'August 2026',
-        },
-      ],
+      sectionTitle: navbarData.categories[CATEGORIES_INDEX_CERTIFICATIONS].name,
+      certificationsList: certificationsData.certificationsList,
     };
   },
 };

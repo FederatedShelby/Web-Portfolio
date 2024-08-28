@@ -2,7 +2,7 @@
   <section id="projects" class="projects">
     <!-- section title -->
     <h2 class="title">
-      Projects
+      {{ sectionTitle }}
       <div class="title-decoration" />
     </h2>
     <!-- projects area -->
@@ -44,28 +44,16 @@
 </template>
 
 <script>
+// data variables
+import { navbarData, CATEGORIES_INDEX_PROJECTS } from '~/data/navbar';
+import { projectsData } from '~/data/sections/projects';
+
 export default {
   name: 'ExperienceComponent',
   data() {
     return {
-      projectsList: [
-        {
-          id: 1,
-          title: 'Web Portfolio',
-          imgSrc: 'logo-html.svg',
-          deploymentLink: 'https://www.google.com/',
-          codeSourceLink: 'https://www.github.com/',
-          skillsList: ['HTML', 'CSS', 'ThreeJS'],
-        },
-        {
-          id: 2,
-          title: 'Machine Learning Pipeline',
-          imgSrc: 'logo-gcp.svg',
-          deploymentLink: 'https://www.google.com/',
-          codeSourceLink: 'https://www.github.com/',
-          skillsList: ['GCP', 'Python'],
-        },
-      ],
+      sectionTitle: navbarData.categories[CATEGORIES_INDEX_PROJECTS].name,
+      projectsList: projectsData.projectsList,
     };
   },
 };

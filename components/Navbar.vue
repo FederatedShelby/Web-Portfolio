@@ -57,20 +57,18 @@
 </template>
 
 <script>
+// libraries
 import VueScrollTo from 'vue-scrollto';
+
+// data variables
+import { navbarData } from '~/data/navbar';
 
 export default {
   name: 'NavbarComponent',
-  props: {
-    categories: {
-      type: Array,
-      default: () => [],
-    },
-  },
   data() {
     return {
-      profilePictureSrc: 'Shelby_profile_image.jpeg',
-      profileText: 'Samuel Sohn',
+      profileText: navbarData.profileText,
+      categories: navbarData.categories,
       isDropdownMenuOpen: false,
       // minimum window.scrollY value when navbar is at the top of the page
       scrollThreshold: 724,
