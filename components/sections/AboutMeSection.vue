@@ -10,8 +10,13 @@
       <!-- intro text content (left side in non-mobile) -->
       <div class="intro-container">
         <!-- main introduction content -->
-        <!-- TODO: replace img src -->
-        <img src="Shelby_profile_image.jpeg" class="intro__profile-picture" />
+        <img
+          src="Shelby_profile_image.svg"
+          class="intro__profile-picture"
+          height="320"
+          width="320"
+          loading="lazy"
+        />
         <div class="intro__text-top">{{ introTextTop }}</div>
         <!-- real world capabilities content -->
         <div class="intro__subsection-title">
@@ -29,7 +34,13 @@
         <div class="skills-cards-list">
           <div v-for="skill in skills" :key="skill.id" class="skills-card">
             <div class="skills-card__image-container">
-              <img :src="skill.src" class="skills-card__image" />
+              <img
+                :src="skill.src"
+                class="skills-card__image"
+                height="128"
+                width="128"
+                loading="lazy"
+              />
             </div>
             <div class="skills-card__text-container">
               <div class="skills-card__skill-name">
