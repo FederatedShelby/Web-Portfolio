@@ -29,58 +29,20 @@
 </template>
 
 <script>
+// data variables
+import { navbarData, CATEGORIES_INDEX_EXPERIENCE } from '~/data/navbar';
+import { experienceData } from '~/data/sections/experience';
+
 export default {
   name: 'ExperienceComponent',
   data() {
     return {
-      sectionTitle: 'Experience',
-      experienceList: [
-        {
-          id: 1,
-          roleTitle: 'Intern',
-          employerName: 'Pulzze Systems, Inc',
-          startDate: 'March 2018',
-          endDate: 'August 2018',
-          responsibilitiesList: [],
-        },
-        {
-          id: 2,
-          roleTitle: 'Product Engineer',
-          employerName: 'Pulzze Systems, Inc',
-          startDate: 'August 2018',
-          endDate: 'December 2019',
-          responsibilitiesList: [],
-        },
-        {
-          id: 3,
-          roleTitle: 'Frontend Developer',
-          employerName: 'Alchera',
-          startDate: 'January 2020',
-          endDate: 'July 2023',
-          responsibilitiesList: [],
-        },
-        {
-          id: 4,
-          roleTitle: 'Product Engineer',
-          employerName: 'Alchera',
-          startDate: 'January 2020',
-          endDate: 'July 2023',
-          responsibilitiesList: [],
-        },
-        {
-          id: 5,
-          roleTitle: 'MLOps Engineer',
-          employerName: 'Alchera',
-          startDate: 'August 2023',
-          endDate: 'May 2024',
-          responsibilitiesList: [],
-        },
-      ],
+      sectionTitle: navbarData.categories[CATEGORIES_INDEX_EXPERIENCE].name,
     };
   },
   computed: {
     reversedExperienceList() {
-      return this.experienceList.slice().reverse();
+      return experienceData.experienceList.slice().reverse();
     },
   },
 };
