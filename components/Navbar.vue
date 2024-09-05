@@ -16,6 +16,8 @@
         >
           {{ category.name }}
         </a>
+        <!-- dark mode toggle -->
+        <DarkModeToggle />
       </div>
       <!-- right content clickable menu dropdown icon (mobile) -->
       <div class="navbar__container--right-mobile">
@@ -60,11 +62,17 @@
 // libraries
 import VueScrollTo from 'vue-scrollto';
 
+// components
+import DarkModeToggle from '~/components/DarkModeToggle.vue';
+
 // data variables
 import { navbarData } from '~/data/navbar';
 
 export default {
   name: 'NavbarComponent',
+  components: {
+    DarkModeToggle,
+  },
   data() {
     return {
       profileText: navbarData.profileText,
