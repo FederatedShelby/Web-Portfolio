@@ -12,6 +12,7 @@
         v-for="cert in certificationsList"
         :key="cert.id"
         class="certifications-card"
+        @click="onClickCertificationCard(cert.certificationLink)"
       >
         <!-- image container -->
         <div class="card__image-container">
@@ -49,6 +50,11 @@ export default {
       sectionTitle: navbarData.categories[CATEGORIES_INDEX_CERTIFICATIONS].name,
       certificationsList: certificationsData.certificationsList,
     };
+  },
+  methods: {
+    onClickCertificationCard(certificationLink) {
+      window.open(certificationLink, '_blank', 'noopener noreferrer');
+    },
   },
 };
 </script>

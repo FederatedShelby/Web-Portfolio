@@ -1,5 +1,5 @@
 <template>
-  <section class="min-h-screen flex flex-col items-center justify-center">
+  <section id="home" class="home">
     <!-- background image -->
     <ThreeBackground />
     <!-- center typed text component -->

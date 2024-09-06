@@ -3,7 +3,9 @@
     <div class="navbar__content">
       <!-- left content area of navbar -->
       <div class="navbar__container">
-        <span class="navbar__profile-text">{{ profileText }}</span>
+        <span class="navbar__profile-text" @click="scrollTo('#home')">{{
+          profileText
+        }}</span>
       </div>
       <!-- right content area of navbar for desktop-->
       <div class="navbar__container--right">
@@ -21,13 +23,9 @@
       </div>
       <!-- right content clickable menu dropdown icon (mobile) -->
       <div class="navbar__container--right-mobile">
-        <button @click.exact="toggleMenu">
+        <button v-show="isNavbarAtTop" @click.exact="toggleMenu">
           <svg
-            class="w-6 h-6"
-            :class="{
-              'text-grey-600': !isNavbarAtTop,
-              'text-white': isNavbarAtTop,
-            }"
+            class="mobile-menu-icon"
             fill="none"
             stroke="currentColor"
             viewBox="0 0 24 24"
@@ -53,6 +51,10 @@
         >
           {{ category.name }}
         </a>
+        <div class="navbar__dropdown-item">
+          <!-- dark mode toggle -->
+          <DarkModeToggle />
+        </div>
       </div>
     </div>
   </nav>
@@ -91,6 +93,9 @@ export default {
     window.removeEventListener('scroll', this.handleScroll);
   },
   methods: {
+    scrollToTop() {
+      VueScrollTo.scrollToTop({});
+    },
     scrollTo(target) {
       VueScrollTo.scrollTo(target, 500, {
         easing: 'ease-in-out',
