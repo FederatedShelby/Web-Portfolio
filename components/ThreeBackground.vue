@@ -1,251 +1,193 @@
 <template>
-  <div ref="threeContainer" class="three-container"></div>
+  <div ref="threeContainer" class="three-container">
+    <!-- foreground image -->
+    <img src="forest.jpg" class="foreground" />
+  </div>
 </template>
 
 <script>
 import * as THREE from 'three';
 
 export default {
+  data() {
+    return {
+      // Three.js base components for rendering
+      scene: null,
+      camera: null,
+      renderer: null,
+      // Three.js class used for blinking effect
+      clock: null,
+      // Data variables for fireflies
+      fireflyCount: 200,
+      fireflyPositions: null,
+      fireflyVelocities: null,
+      fireflies: null,
+    };
+  },
   mounted() {
     this.initThreeJS();
+    window.addEventListener('resize', this.onWindowResize);
+  },
+  beforeDestroy() {
+    window.removeEventListener('resize', this.onWindowResize);
+    if (this.renderer) this.renderer.dispose();
   },
   methods: {
-    initThreeJS() {
-      const container = this.$refs.threeContainer;
+    vertexShader() {
+      return `
+        attribute float phase;
+        varying float vPhase;
 
-      const scene = new THREE.Scene();
-      const camera = new THREE.PerspectiveCamera(
-        75,
-        container.clientWidth / container.clientHeight,
-        0.1,
-        1000
-      );
-      camera.position.z = 17.5;
-
-      const renderer = new THREE.WebGLRenderer({ antialias: true });
-      renderer.setSize(container.clientWidth, container.clientHeight);
-      container.appendChild(renderer.domElement); // Append renderer to the correct container
-
-      const group = new THREE.Group();
-      scene.add(group);
-
-      // Constants
-      const particleCount = 500; // Fixed number of particles
-      const radius = 10; // Radius of the sphere
-      const maxConnections = 20;
-      const minDistance = 2.5;
-      const fixedVelocity = 0.01; // Fixed velocity magnitude for all particles
-      const color = new THREE.Color(0xc0ffee); // Color for both particles and edges
-
-      // Buffers
-      const positions = new Float32Array(particleCount * particleCount * 3);
-      const colors = new Float32Array(particleCount * particleCount * 3);
-      const particlePositions = new Float32Array(particleCount * 3);
-      const particlesData = [];
-
-      let vertexpos = 0;
-      let colorpos = 0;
-      let numConnected = 0;
-
-      const v = new THREE.Vector3();
-
-      // Particles Setup
-      for (let i = 0; i < particleCount; i++) {
-        // Random spherical coordinates for particle positions
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos(Math.random() * 2 - 1);
-        const r = radius * Math.cbrt(Math.random());
-
-        const x = r * Math.sin(phi) * Math.cos(theta);
-        const y = r * Math.sin(phi) * Math.sin(theta);
-        const z = r * Math.cos(phi);
-
-        particlePositions[i * 3] = x;
-        particlePositions[i * 3 + 1] = y;
-        particlePositions[i * 3 + 2] = z;
-
-        // Random direction with fixed velocity
-        const velocity = new THREE.Vector3(
-          Math.random() - 0.5,
-          Math.random() - 0.5,
-          Math.random() - 0.5
-        )
-          .normalize()
-          .multiplyScalar(fixedVelocity);
-
-        particlesData.push({
-          velocity,
-          numConnections: 0,
-        });
-      }
-
-      const particleGeometry = new THREE.BufferGeometry();
-      particleGeometry.setAttribute(
-        'position',
-        new THREE.BufferAttribute(particlePositions, 3).setUsage(
-          THREE.DynamicDrawUsage
-        )
-      );
-
-      const particleMaterial = new THREE.PointsMaterial({
-        color, // Set particle color
-        size: 3,
-        blending: THREE.AdditiveBlending,
-        transparent: true,
-        sizeAttenuation: false,
-      });
-
-      const particles = new THREE.Points(particleGeometry, particleMaterial);
-      group.add(particles);
-
-      // Lines Setup
-      const lineGeometry = new THREE.BufferGeometry();
-      lineGeometry.setAttribute(
-        'position',
-        new THREE.BufferAttribute(positions, 3).setUsage(THREE.DynamicDrawUsage)
-      );
-      lineGeometry.setAttribute(
-        'color',
-        new THREE.BufferAttribute(colors, 3).setUsage(THREE.DynamicDrawUsage)
-      );
-
-      const lineMaterial = new THREE.LineBasicMaterial({
-        vertexColors: true,
-        blending: THREE.AdditiveBlending,
-        transparent: true,
-      });
-
-      const linesMesh = new THREE.LineSegments(lineGeometry, lineMaterial);
-      group.add(linesMesh);
-
-      // Cursor-Following Particle
-      const cursorParticleGeometry = new THREE.BufferGeometry();
-      const cursorParticlePosition = new Float32Array(3);
-      cursorParticleGeometry.setAttribute(
-        'position',
-        new THREE.BufferAttribute(cursorParticlePosition, 3)
-      );
-
-      const cursorParticle = new THREE.Points(
-        cursorParticleGeometry,
-        particleMaterial
-      );
-      scene.add(cursorParticle);
-
-      // Mouse position in normalized device coordinates
-      const mouse = new THREE.Vector2();
-      const cursorPosition = new THREE.Vector3();
-
-      // Event Listener for Mouse Movement
-      container.addEventListener('mousemove', (event) => {
-        mouse.x = (event.clientX / container.clientWidth) * 2 - 1;
-        mouse.y = -(event.clientY / container.clientHeight) * 2 + 1;
-      });
-
-      // Animation Loop
-      function animate() {
-        vertexpos = 0;
-        colorpos = 0;
-        numConnected = 0;
-
-        particlesData.forEach((data, _) => (data.numConnections = 0));
-
-        // Update particle positions and edges
-        for (let i = 0; i < particleCount; i++) {
-          const particleData = particlesData[i];
-
-          v.set(
-            particlePositions[i * 3],
-            particlePositions[i * 3 + 1],
-            particlePositions[i * 3 + 2]
-          ).add(particleData.velocity);
-
-          // Check if the particle is outside the sphere
-          if (v.length() > radius) {
-            // Reflect velocity to keep the particle inside the sphere
-            v.normalize().multiplyScalar(radius);
-            particleData.velocity.reflect(v.clone().normalize());
-          }
-
-          particlePositions[i * 3] = v.x;
-          particlePositions[i * 3 + 1] = v.y;
-          particlePositions[i * 3 + 2] = v.z;
-
-          if (particleData.numConnections >= maxConnections) continue;
-
-          for (let j = i + 1; j < particleCount; j++) {
-            const particleDataB = particlesData[j];
-            if (particleDataB.numConnections >= maxConnections) continue;
-
-            const dx = particlePositions[i * 3] - particlePositions[j * 3];
-            const dy =
-              particlePositions[i * 3 + 1] - particlePositions[j * 3 + 1];
-            const dz =
-              particlePositions[i * 3 + 2] - particlePositions[j * 3 + 2];
-            const dist = Math.sqrt(dx * dx + dy * dy + dz * dz);
-
-            if (dist < minDistance) {
-              particleData.numConnections++;
-              particleDataB.numConnections++;
-
-              const alpha = 1.0 - dist / minDistance;
-
-              positions[vertexpos++] = particlePositions[i * 3];
-              positions[vertexpos++] = particlePositions[i * 3 + 1];
-              positions[vertexpos++] = particlePositions[i * 3 + 2];
-
-              positions[vertexpos++] = particlePositions[j * 3];
-              positions[vertexpos++] = particlePositions[j * 3 + 1];
-              positions[vertexpos++] = particlePositions[j * 3 + 2];
-
-              colors[colorpos++] = color.r * alpha;
-              colors[colorpos++] = color.g * alpha;
-              colors[colorpos++] = color.b * alpha;
-
-              colors[colorpos++] = color.r * alpha;
-              colors[colorpos++] = color.g * alpha;
-              colors[colorpos++] = color.b * alpha;
-
-              numConnected++;
-            }
-          }
+        void main() {
+          vPhase = phase;
+          vec4 mvPosition = modelViewMatrix * instanceMatrix * vec4(position, 1.0);
+          gl_Position = projectionMatrix * mvPosition;
         }
+      `;
+    },
+    fragmentShader() {
+      return `
+        uniform float time;
+        uniform vec3 color;
+        varying float vPhase;
 
-        // Update cursor particle position
-        const vector = new THREE.Vector3(mouse.x, mouse.y, 0.5);
-        vector.unproject(camera);
-        vector.sub(camera.position).normalize();
-        const distance = -camera.position.z / vector.z;
-        cursorPosition
-          .copy(camera.position)
-          .add(vector.multiplyScalar(distance));
+        void main() {
+          float blink = abs(sin(time + vPhase));
+          gl_FragColor = vec4(color, blink);
+        }
+      `;
+    },
+    initThreeJS() {
+      // Define DOM element container to render on
+      const container = this.$refs.threeContainer;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
 
-        cursorParticlePosition[0] = cursorPosition.x;
-        cursorParticlePosition[1] = cursorPosition.y;
-        cursorParticlePosition[2] = cursorPosition.z;
+      // Set up scene, camera, renderer
+      this.scene = new THREE.Scene();
+      this.camera = new THREE.PerspectiveCamera(40, width / height, 1, 10000);
+      this.camera.position.z = 300;
+      this.renderer = new THREE.WebGLRenderer({ antialias: true });
+      this.renderer.setPixelRatio(window.devicePixelRatio);
+      this.renderer.setSize(width, height);
+      this.renderer.setClearColor(0x000000, 0); // Transparent background
 
-        cursorParticleGeometry.attributes.position.needsUpdate = true;
+      // Append renderer to DOM element by ref
+      container.appendChild(this.renderer.domElement);
 
-        lineGeometry.setDrawRange(0, numConnected * 2);
-        lineGeometry.attributes.position.needsUpdate = true;
-        lineGeometry.attributes.color.needsUpdate = true;
+      // Define parameters for firefly
+      const fireflyGeometry = new THREE.SphereGeometry(1, 16, 16);
+      const fireflyMaterial = new THREE.ShaderMaterial({
+        uniforms: {
+          time: { value: 0 },
+          color: { value: new THREE.Color(0xd3eb7e) },
+        },
+        vertexShader: this.vertexShader(),
+        fragmentShader: this.fragmentShader(),
+        transparent: true,
+        depthTest: false,
+      });
 
-        particleGeometry.attributes.position.needsUpdate = true;
+      // Instanced attributes for position and opacity
+      this.fireflyPositions = new Float32Array(this.fireflyCount * 3);
+      this.fireflyVelocities = new Float32Array(this.fireflyCount * 3);
+      const fireflyBlinkOffsets = new Float32Array(this.fireflyCount);
 
-        group.rotation.y += 0.002;
+      for (let i = 0; i < this.fireflyCount; i++) {
+        // Set random positions for each firefly
+        this.fireflyPositions[i * 3] = (Math.random() * 2 - 1) * 200;
+        this.fireflyPositions[i * 3 + 1] = (Math.random() * 2 - 1) * 200;
+        this.fireflyPositions[i * 3 + 2] = (Math.random() * 2 - 1) * 200;
 
-        renderer.render(scene, camera);
-        requestAnimationFrame(animate);
+        // Set random velocities for each firefly
+        this.fireflyVelocities[i * 3] = (Math.random() * 2 - 1) * 0.2;
+        this.fireflyVelocities[i * 3 + 1] = (Math.random() * 2 - 1) * 0.2;
+        this.fireflyVelocities[i * 3 + 2] = (Math.random() * 2 - 1) * 0.2;
+
+        // Set random offset "phase" to make each firefly blink at different times
+        fireflyBlinkOffsets[i] = Math.random() * Math.PI * 2;
       }
 
-      animate();
+      this.fireflies = new THREE.InstancedMesh(
+        fireflyGeometry,
+        fireflyMaterial,
+        this.fireflyCount
+      );
 
-      // Handle Window Resize
-      window.addEventListener('resize', () => {
-        camera.aspect = container.clientWidth / container.clientHeight;
-        camera.updateProjectionMatrix();
-        renderer.setSize(container.clientWidth, container.clientHeight);
-      });
+      const dummy = new THREE.Object3D();
+
+      for (let i = 0; i < this.fireflyCount; i++) {
+        dummy.position.set(
+          this.fireflyPositions[i * 3],
+          this.fireflyPositions[i * 3 + 1],
+          this.fireflyPositions[i * 3 + 2]
+        );
+        dummy.updateMatrix();
+        this.fireflies.setMatrixAt(i, dummy.matrix);
+      }
+      this.fireflies.instanceMatrix.needsUpdate = true;
+
+      // Store phases as an attribute
+      this.fireflies.geometry.setAttribute(
+        'phase',
+        new THREE.InstancedBufferAttribute(fireflyBlinkOffsets, 1)
+      );
+
+      // Add the fireflies to the scene
+      this.scene.add(this.fireflies);
+
+      // Clock to manage time
+      this.clock = new THREE.Clock();
+
+      this.animate();
+    },
+    animate() {
+      requestAnimationFrame(this.animate);
+      // Integrate firefly blinking effect
+      this.fireflies.material.uniforms.time.value = this.clock.getElapsedTime();
+
+      // Integrate random firefly movement
+      this.fireflies.rotation.y += 0.002;
+      const dummy = new THREE.Object3D();
+      // Update positions based on velocities
+      for (let i = 0; i < this.fireflyCount; i++) {
+        // Get the current position and velocity
+        const positionX = (this.fireflyPositions[i * 3] +=
+          this.fireflyVelocities[i * 3]);
+        const positionY = (this.fireflyPositions[i * 3 + 1] +=
+          this.fireflyVelocities[i * 3 + 1]);
+        const positionZ = (this.fireflyPositions[i * 3 + 2] +=
+          this.fireflyVelocities[i * 3 + 2]);
+
+        // Update position in the dummy object
+        dummy.position.set(positionX, positionY, positionZ);
+        dummy.updateMatrix();
+
+        // Set the matrix for each firefly to update its position
+        this.fireflies.setMatrixAt(i, dummy.matrix);
+
+        const boundary = 100;
+        if (Math.abs(positionX) > boundary) this.fireflyVelocities[i * 3] *= -1; // Reverse X velocity if boundary is crossed
+        if (Math.abs(positionY) > boundary)
+          this.fireflyVelocities[i * 3 + 1] *= -1; // Reverse Y velocity if boundary is crossed
+        if (Math.abs(positionZ) > boundary)
+          this.fireflyVelocities[i * 3 + 2] *= -1; // Reverse Z velocity if boundary is crossed
+      }
+
+      this.fireflies.instanceMatrix.needsUpdate = true;
+
+      // render animation
+      this.renderer.render(this.scene, this.camera);
+    },
+    onWindowResize() {
+      // Define DOM element container to render on
+      const container = this.$refs.threeContainer;
+      const width = container.clientWidth;
+      const height = container.clientHeight;
+
+      this.camera.aspect = width / height;
+      this.camera.updateProjectionMatrix();
+      this.renderer.setSize(width, height);
     },
   },
 };
