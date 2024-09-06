@@ -1,21 +1,48 @@
 <template>
   <div class="toggle-container" @click="toggleDarkMode">
-    <span v-if="isDarkMode" class="w-6 h-6"> DARK </span>
-    <span v-else class="w-6 h-6"> DAY </span>
+    <!-- icon -->
+    <img
+      v-if="isDarkMode"
+      :src="darkModeIconSrc"
+      height="18"
+      width="18"
+      alt="dark mode icon"
+      loading="lazy"
+      class="toggle-icon__dark-mode"
+    />
+    <img
+      v-else
+      :src="lightModeIconSrc"
+      height="18"
+      width="18"
+      alt="light mode icon"
+      loading="lazy"
+      class="toggle-icon__light-mode"
+    />
+    <!-- text -->
+    <span class="toggle-text">{{ toggleText }}</span>
   </div>
 </template>
 
-<script lang="ts">
+<script>
 // libraries
-import { defineComponent } from 'vue';
 import { mapState, mapActions } from 'vuex';
 
-export default defineComponent({
+export default {
   name: 'DarkModeToggle',
+  data() {
+    return {
+      darkModeIconSrc: 'icon-moon.svg',
+      lightModeIconSrc: 'icon-sun.svg',
+    };
+  },
   computed: {
     ...mapState({
-      isDarkMode: (state: any) => state.isDarkMode,
+      isDarkMode: (state) => state.isDarkMode,
     }),
+    toggleText() {
+      return this.isDarkMode ? 'Dark' : 'Light';
+    },
   },
   watch: {
     isDarkMode: {
@@ -31,7 +58,7 @@ export default defineComponent({
   methods: {
     ...mapActions(['toggleDarkMode']),
     applyDarkClass() {
-      const mainElement: HTMLElement | null = document.getElementById('Main');
+      const mainElement = document.getElementById('Main');
       if (this.isDarkMode) {
         mainElement?.classList.add('dark');
       } else {
@@ -39,7 +66,7 @@ export default defineComponent({
       }
     },
   },
-});
+};
 </script>
 
 <style lang="sass" scoped>
