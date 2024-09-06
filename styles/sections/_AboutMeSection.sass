@@ -7,7 +7,8 @@
   @apply min-h-screen w-full
   //  5.  Typography
   //  6.  Backgrounds
-  @apply bg-transparent
+  @apply bg-background
+  @apply dark:bg-gradient-to-r dark:from-dark-background dark:to-dark-background/80
   //  7.  Borders
   //  8.  Effects
   //  9.  Filters
@@ -25,7 +26,8 @@
   @apply m-4
   //  4.  Sizing
   //  5.  Typography
-  @apply text-5xl text-white
+  @apply text-5xl uppercase italic
+  @apply text-light dark:text-dark
   //  6.  Backgrounds
   //  7.  Borders
   //  8.  Effects
@@ -85,7 +87,7 @@
   //  3.  Spacing
   //  4.  Sizing
   //  5.  Typography
-  @apply text-white
+  @apply text-light dark:text-dark
   //  6.  Backgrounds
   //  7.  Borders
   //  8.  Effects
@@ -180,11 +182,11 @@
   @apply my-3 px-2
   //  4.  Sizing
   //  5.  Typography
-  @apply text-xl text-slate-500
+  @apply text-xl text-accent
   //  6.  Backgrounds
-  @apply bg-lime-300 hover:bg-lime-400
+  @apply hover:bg-slate-100 hover:dark:bg-slate-900
   //  7.  Borders
-  @apply rounded-full
+  @apply border border-accent rounded-md
   //  8.  Effects
   //  9.  Filters
   //  10. Tables
@@ -221,7 +223,7 @@
   @apply my-3
   //  4.  Sizing
   //  5.  Typography
-  @apply text-slate-200 text-4xl italic
+  @apply text-blue-300 dark:text-blue-500 text-4xl italic
   //  6.  Backgrounds
   //  7.  Borders
   //  8.  Effects
@@ -259,7 +261,7 @@
   @apply m-2 p-2
   //  4.  Sizing
   //  5.  Typography
-  @apply text-white
+  @apply text-light dark:text-dark
   //  6.  Backgrounds
   //  7.  Borders
   //  8.  Effects

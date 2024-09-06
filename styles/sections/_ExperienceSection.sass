@@ -7,7 +7,8 @@
   @apply w-full
   //  5.  Typography
   //  6.  Backgrounds
-  @apply bg-transparent
+  @apply bg-background
+  @apply dark:bg-gradient-to-r dark:from-dark-background dark:to-dark-background/80
   //  7.  Borders
   //  8.  Effects
   //  9.  Filters
@@ -25,7 +26,8 @@
   @apply m-4
   //  4.  Sizing
   //  5.  Typography
-  @apply text-5xl text-white
+  @apply text-5xl uppercase italic
+  @apply text-light dark:text-dark
   //  6.  Backgrounds
   //  7.  Borders
   //  8.  Effects
@@ -88,8 +90,8 @@
   @apply after:h-[20px] after:w-[20px]
   //  5.  Typography
   //  6.  Backgrounds
-  @apply before:bg-black
-  @apply after:bg-black
+  @apply before:bg-background before:dark:bg-dark-background
+  @apply after:bg-background after:dark:bg-black
   //  7.  Borders
   @apply before:rounded-full before:border-2 before:border-blue-400
   @apply after:rounded-full after:border-2 after:border-blue-400
@@ -110,7 +112,6 @@
   @apply p-4 pl-8
   //  4.  Sizing
   //  5.  Typography
-  @apply text-white
   //  6.  Backgrounds
   //  7.  Borders
   @apply border-l-2 border-blue-400
@@ -147,7 +148,7 @@
   //  3.  Spacing
   //  4.  Sizing
   //  5.  Typography
-  @apply text-2xl
+  @apply text-2xl text-light dark:text-dark
   //  6.  Backgrounds
   //  7.  Borders
   //  8.  Effects
@@ -165,7 +166,7 @@
   //  3.  Spacing
   //  4.  Sizing
   //  5.  Typography
-  @apply text-xl text-slate-200 italic
+  @apply text-xl text-slate-900 dark:text-slate-200 italic
   //  6.  Backgrounds
   //  7.  Borders
   //  8.  Effects
