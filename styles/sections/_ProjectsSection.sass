@@ -7,8 +7,8 @@
   @apply w-full
   //  5.  Typography
   //  6.  Backgrounds
-  @apply bg-transparent
-  //  7.  Borders
+  @apply bg-background
+  @apply dark:bg-gradient-to-r dark:from-dark-background dark:to-dark-background/80  //  7.  Borders
   //  8.  Effects
   //  9.  Filters
   //  10. Tables
@@ -25,7 +25,8 @@
   @apply m-4
   //  4.  Sizing
   //  5.  Typography
-  @apply text-5xl text-white
+  @apply text-5xl uppercase italic
+  @apply text-light dark:text-dark
   //  6.  Backgrounds
   //  7.  Borders
   //  8.  Effects
@@ -117,10 +118,11 @@
 
 .card__image
   //  1.  Layout
+  @apply aspect-video object-fill
   //  2.  Flexbox & Grid
   //  3.  Spacing
   //  4.  Sizing
-  @apply h-full
+  @apply h-full w-full
   //  5.  Typography
   //  6.  Backgrounds
   //  7.  Borders
@@ -139,7 +141,7 @@
   //  3.  Spacing
   //  4.  Sizing
   //  5.  Typography
-  @apply text-4xl text-white
+  @apply text-4xl text-light dark:text-dark
   //  6.  Backgrounds
   //  7.  Borders
   //  8.  Effects
@@ -175,7 +177,7 @@
   //  3.  Spacing
   //  4.  Sizing
   //  5.  Typography
-  @apply text-2xl text-white
+  @apply text-2xl text-light dark:text-dark
   //  6.  Backgrounds
   //  7.  Borders
   //  8.  Effects
@@ -212,10 +214,10 @@
   @apply px-1
   //  4.  Sizing
   //  5.  Typography
-  @apply text-white hover:text-blue-100
+  @apply text-light dark:text-dark
   //  6.  Backgrounds
   //  7.  Borders
-  @apply border border-lime-400
+  @apply border border-blue-400
   //  8.  Effects
   //  9.  Filters
   //  10. Tables

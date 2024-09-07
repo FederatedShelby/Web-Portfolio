@@ -1,7 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-  <title>HTML5 Logo Badge</title>
-  <path fill="#E34F26" d="M71,460 L30,0 481,0 440,460 255,512"/>
-  <path fill="#EF652A" d="M256,472 L405,431 440,37 256,37"/>
-  <path fill="#EBEBEB" d="M256,208 L181,208 176,150 256,150 256,94 255,94 114,94 115,109 129,265 256,265zM256,355 L255,355 192,338 188,293 158,293 132,293 139,382 255,414 256,414z"/>
-  <path fill="#FFF" d="M255,208 L255,265 325,265 318,338 255,355 255,414 371,382 372,372 385,223 387,208 371,208zM255,94 L255,129 255,150 255,150 392,150 392,150 392,150 393,138 396,109 397,94z"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="128px" height="128px" viewBox="0 0 128 128" version="1.1">
+<g id="surface1">
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(89.019608%,30.980392%,14.901961%);fill-opacity:1;" d="M 17.75 115 L 7.5 0 L 120.25 0 L 110 115 L 63.75 128 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(93.72549%,39.607843%,16.470588%);fill-opacity:1;" d="M 64 118 L 101.25 107.75 L 110 9.25 L 64 9.25 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(92.156863%,92.156863%,92.156863%);fill-opacity:1;" d="M 64 52 L 45.25 52 L 44 37.5 L 64 37.5 L 64 23.5 L 28.5 23.5 L 28.75 27.25 L 32.25 66.25 L 64 66.25 Z M 64 88.75 L 63.75 88.75 L 48 84.5 L 47 73.25 L 33 73.25 L 34.75 95.5 L 63.75 103.5 L 64 103.5 Z M 64 88.75 "/>
+<path style=" stroke:none;fill-rule:nonzero;fill:rgb(100%,100%,100%);fill-opacity:1;" d="M 63.75 52 L 63.75 66.25 L 81.25 66.25 L 79.5 84.5 L 63.75 88.75 L 63.75 103.5 L 92.75 95.5 L 93 93 L 96.25 55.75 L 96.75 52 Z M 63.75 23.5 L 63.75 37.5 L 98 37.5 L 98.25 34.5 L 99 27.25 L 99.25 23.5 Z M 63.75 23.5 "/>
+</g>
 </svg>

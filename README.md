@@ -16,7 +16,6 @@ This project is built with [Nuxt.js](https://nuxt.com/), [Tailwind CSS](https://
 - **Nuxt.js:** 2.18.1
 - **ESLint:** 8.24.0
 - **Prettier:** 2.8.8
-- **Vuex:** 3.6.2
 - **Tailwind CSS:** 3.4.7
 - **SASS:** 1.77.8
 - **vue-scrollto:** 2.20.0
