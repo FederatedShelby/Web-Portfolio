@@ -9,6 +9,7 @@
     <Experience />
     <Certifications />
     <Projects />
+    <Contact />
   </div>
 </template>
 
@@ -24,6 +25,7 @@ import AboutMe from '~/components/sections/AboutMeSection.vue';
 import Experience from '~/components/sections/ExperienceSection.vue';
 import Certifications from '~/components/sections/CertificationsSection.vue';
 import Projects from '~/components/sections/ProjectsSection.vue';
+import Contact from '~/components/sections/ContactSection.vue';
 
 export default Vue.extend({
   name: 'IndexPage',
@@ -34,6 +36,7 @@ export default Vue.extend({
     Experience,
     Certifications,
     Projects,
+    Contact,
   },
 });
 </script>
