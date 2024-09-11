@@ -3,6 +3,7 @@ export const CATEGORIES_INDEX_ABOUTME: number = 0;
 export const CATEGORIES_INDEX_EXPERIENCE: number = 1;
 export const CATEGORIES_INDEX_CERTIFICATIONS: number = 2;
 export const CATEGORIES_INDEX_PROJECTS: number = 3;
+export const CATEGORIES_INDEX_CONTACT: number = 4;
 
 export const navbarData: any = Object.freeze({
   // PATH:  components > Navbar.vue
@@ -33,6 +34,12 @@ export const navbarData: any = Object.freeze({
       name: 'Projects',
       href: '#projects',
       scrollToId: 'projects',
+    },
+    {
+      id: 5,
+      name: 'Contact',
+      href: '#contact',
+      scrollToId: 'contact',
     },
   ],
 });
