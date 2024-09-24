@@ -10,6 +10,8 @@
     <Certifications />
     <Projects />
     <Contact />
+    <!-- footer -->
+    <FooterComponent />
   </div>
 </template>
 
@@ -18,6 +20,7 @@ import Vue from 'vue';
 
 // components
 import Navbar from '~/components/Navbar.vue';
+import FooterComponent from '~/components/Footer.vue';
 
 // page sections
 import Home from '~/components/sections/HomeSection.vue';
@@ -31,6 +34,7 @@ export default Vue.extend({
   name: 'IndexPage',
   components: {
     Navbar,
+    FooterComponent,
     Home,
     AboutMe,
     Experience,
