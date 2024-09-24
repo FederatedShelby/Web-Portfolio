@@ -29,8 +29,9 @@ export const footerData: any = Object.freeze({
       iconSrcLight: 'icon-blog__light.svg',
       iconSrcDark: 'icon-blog__dark.svg',
       redirectLink: 'https://nullterra1804.wordpress.com/blog/',
-    }
+    },
   ],
   copyrightText: 'Designed & Built by Seong Kyu Sohn © 2024',
-  portfolioLink: 'https://github.com/FederatedShelby/federated-shelby.github.io',
+  portfolioLink:
+    'https://github.com/FederatedShelby/federated-shelby.github.io',
 });
