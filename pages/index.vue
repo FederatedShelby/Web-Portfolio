@@ -16,7 +16,10 @@
 </template>
 
 <script>
+// libraries
 import Vue from 'vue';
+import AOS from 'aos';
+import 'aos/dist/aos.css';
 
 // components
 import Navbar from '~/components/Navbar.vue';
@@ -41,6 +44,9 @@ export default Vue.extend({
     Certifications,
     Projects,
     Contact,
+  },
+  mounted() {
+    AOS.init();
   },
 });
 </script>
