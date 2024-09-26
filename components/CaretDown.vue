@@ -1,18 +1,18 @@
 <template>
-  <div
-    class="click-area"
-    data-aos="fade-down"
-    data-aos-delay="3000"
-    data-aos-duration="2000"
-    @click="handleClick"
-  >
-    <div class="caret-container">
+  <div class="click-area" @click="handleClick">
+    <div
+      class="caret-container"
+      data-aos="fade-up"
+      data-aos-delay="3000"
+      data-aos-duration="2000"
+    >
       <img
-        src="caret-down.svg"
+        src="caret-down__dark.svg"
         width="24"
         height="24"
         class="caret-img"
         alt="caret-down"
+        loading="lazy"
       />
     </div>
   </div>
