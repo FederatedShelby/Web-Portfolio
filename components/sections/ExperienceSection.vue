@@ -1,12 +1,12 @@
 <template>
   <section id="experience" class="experience">
     <!-- section title -->
-    <h2 class="title">
+    <h2 class="title" data-aos="flip-up">
       {{ sectionTitle }}
       <div class="title-decoration" />
     </h2>
     <!-- experience area -->
-    <div class="experience-cards-list">
+    <div class="experience-cards-list" data-aos="fade-up" data-aos-once="true">
       <!-- experience cards -->
       <div
         v-for="exp in reversedExperienceList"
