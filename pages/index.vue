@@ -10,16 +10,21 @@
     <Certifications />
     <Projects />
     <Contact />
+    <!-- caret to scroll to home section -->
+    <CaretUp />
     <!-- footer -->
     <FooterComponent />
   </div>
 </template>
 
 <script>
+// libraries
 import Vue from 'vue';
+import AOS from 'aos';
 
 // components
 import Navbar from '~/components/Navbar.vue';
+import CaretUp from '~/components/CaretUp.vue';
 import FooterComponent from '~/components/Footer.vue';
 
 // page sections
@@ -34,6 +39,7 @@ export default Vue.extend({
   name: 'IndexPage',
   components: {
     Navbar,
+    CaretUp,
     FooterComponent,
     Home,
     AboutMe,
@@ -42,5 +48,12 @@ export default Vue.extend({
     Projects,
     Contact,
   },
+  mounted() {
+    AOS.init();
+  },
 });
 </script>
+
+<style lang="css">
+@import 'aos/dist/aos.css';
+</style>

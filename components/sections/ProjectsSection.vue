@@ -1,7 +1,7 @@
 <template>
   <section id="projects" class="projects">
     <!-- section title -->
-    <h2 class="title">
+    <h2 class="title" data-aos="flip-up">
       {{ sectionTitle }}
       <div class="title-decoration" />
     </h2>
@@ -14,13 +14,19 @@
         class="project-card"
       >
         <!-- project image container -->
-        <div class="card__image-container">
+        <div
+          class="card__image-container"
+          data-aos="fade-up"
+          data-aos-once="true"
+        >
           <img :src="project.imgSrc" class="card__image" />
         </div>
         <!-- project title -->
-        <div class="card__title">{{ project.title }}</div>
+        <div class="card__title" data-aos="fade-up" data-aos-once="true">
+          {{ project.title }}
+        </div>
         <!-- project skills list -->
-        <div class="card__skills-list">
+        <div class="card__skills-list" data-aos="fade-up" data-aos-once="true">
           <div
             v-for="skill in project.skillsList"
             :key="skill"
@@ -30,7 +36,7 @@
           </div>
         </div>
         <!-- deployment, code source links -->
-        <div class="card__links-list">
+        <div class="card__links-list" data-aos="fade-up" data-aos-once="true">
           <a :href="project.deploymentLink" target="_blank" class="card__link"
             >View Project</a
           >

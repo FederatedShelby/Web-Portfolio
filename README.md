@@ -21,6 +21,7 @@ This project is built with [Nuxt.js](https://nuxt.com/), [Tailwind CSS](https://
 - **vue-scrollto:** 2.20.0
 - **vue-typer:** 1.2.0
 - **emailjs-com:** 3.2.0
+- **aos:** 2.3.4
 
 The full list of packages/libraries and their versioning can be found in the `package.json` file in the main directory.
 

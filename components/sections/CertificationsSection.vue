@@ -1,7 +1,7 @@
 <template>
   <section id="certifications" class="certifications">
     <!-- section title -->
-    <h2 class="title">
+    <h2 class="title" data-aos="flip-up">
       {{ sectionTitle }}
       <div class="title-decoration" />
     </h2>
@@ -12,6 +12,8 @@
         v-for="cert in certificationsList"
         :key="cert.id"
         class="certifications-card"
+        data-aos="fade-up"
+        data-aos-once="true"
         @click="onClickCertificationCard(cert.certificationLink)"
       >
         <!-- image container -->

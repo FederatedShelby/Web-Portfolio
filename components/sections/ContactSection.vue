@@ -1,7 +1,7 @@
 <template>
   <section id="contact" class="contact">
     <!-- section card -->
-    <div class="contact-card">
+    <div class="contact-card" data-aos="zoom-in">
       <div class="card-subcontainer">
         <div class="card-title">{{ sectionTitle }}</div>
         <div class="card-main-text">
