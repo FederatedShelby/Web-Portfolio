@@ -4,12 +4,8 @@
     <ThreeBackground />
     <!-- center typed text component -->
     <TypedText />
-    <!-- left slide component -->
-    <!-- TODO: create component that slides up and displays github/linkedin/email icons -->
-    <!-- right slide component -->
-    <!-- TODO: create component  -->
-    <!-- bottom caret component -->
-    <!-- TODO: create delayed clickable caret to automatically scroll to About Me -->
+    <!-- caret to scroll to first section component -->
+    <CaretDown />
   </section>
 </template>
 
@@ -17,12 +13,14 @@
 // components
 import ThreeBackground from '~/components/ThreeBackground.vue';
 import TypedText from '~/components/TypedText.vue';
+import CaretDown from '~/components/CaretDown.vue';
 
 export default {
   name: 'HomeComponent',
   components: {
     ThreeBackground,
     TypedText,
+    CaretDown,
   },
 };
 </script>
