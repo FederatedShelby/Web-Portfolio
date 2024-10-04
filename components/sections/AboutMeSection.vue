@@ -8,42 +8,28 @@
     <!-- section contents -->
     <div class="aboutme__contents">
       <!-- intro text content (left side in non-mobile) -->
-      <div class="intro-container">
+      <div class="intro-container" data-aos="fade-right" data-aos-once="true">
         <!-- main introduction content -->
-        <img
-          src="Shelby_profile_image.svg"
-          class="intro__profile-picture"
-          data-aos="fade-up"
-          data-aos-once="true"
-          height="320"
-          width="320"
-          loading="lazy"
-        />
-        <div class="intro__text-top" data-aos="fade-up" data-aos-once="true">
-          {{ introTextTop }}
+        <div class="intro__text-top">
+          <span
+          v-for="textObj in introTopTextList"
+          :key="textObj.id"
+          :class="textObj.weight === 1 ? 'font-normal' : 'font-thin'"
+          >{{ textObj.text }}</span>
         </div>
         <!-- real world capabilities content -->
-        <div
-          class="intro__subsection-title"
-          data-aos="fade-up"
-          data-aos-once="true"
-        >
+        <div class="intro__subsection-title">
           {{ subsectionTitle }}
         </div>
-        <div
-          class="intro__subsection-text"
-          data-aos="fade-up"
-          data-aos-once="true"
-        >
-          {{ subsectionText }}
+        <div class="intro__subsection-text">
+          <span
+          v-for="textObj in subsectionTextList"
+          :key="textObj.id"
+          :class="textObj.weight === 1 ? 'font-normal' : 'font-thin'"
+          >{{ textObj.text }}</span>
         </div>
         <!-- button to open resumé Google Docs link in new tab -->
-        <button
-          class="button-resume"
-          data-aos="fade-up"
-          data-aos-once="true"
-          @click="onClickViewResume"
-        >
+        <button class="button-resume" @click="onClickViewResume">
           {{ buttonResumeText }}
         </button>
       </div>
@@ -62,8 +48,8 @@
               <img
                 :src="skill.src"
                 class="skills-card__image"
-                height="100"
-                width="100"
+                height="90"
+                width="90"
                 loading="lazy"
               />
             </div>
@@ -96,8 +82,8 @@ export default {
     return {
       sectionTitle: navbarData.categories[CATEGORIES_INDEX_ABOUTME].name,
       subsectionTitle: aboutmeData.subsectionTitle,
-      introTextTop: aboutmeData.introTextTop,
-      subsectionText: aboutmeData.subsectionText,
+      introTopTextList: aboutmeData.introTopTextList,
+      subsectionTextList: aboutmeData.subsectionTextList,
       buttonResumeText: aboutmeData.buttonResumeText,
       resumeGoogleDocsLink: aboutmeData.resumeGoogleDocsLink,
       skillsTitle: aboutmeData.skillsTitle,
