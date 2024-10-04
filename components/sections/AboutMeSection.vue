@@ -33,40 +33,6 @@
           {{ buttonResumeText }}
         </button>
       </div>
-      <!-- skills content (right side in non-mobile) -->
-      <div class="skills-container">
-        <div class="skills-title">{{ skillsTitle }}</div>
-        <div class="skills-cards-list">
-          <div
-            v-for="skill in skills"
-            :key="skill.id"
-            class="skills-card"
-            data-aos="fade-left"
-            data-aos-once="true"
-          >
-            <div class="skills-card__image-container">
-              <img
-                :src="skill.src"
-                class="skills-card__image"
-                height="90"
-                width="90"
-                loading="lazy"
-              />
-            </div>
-            <div class="skills-card__text-container">
-              <div class="skills-card__skill-name">
-                {{ skill.text }}
-              </div>
-              <div class="skills-card__skill-yoe">
-                <span class="text-blue-400">{{
-                  skill.yearsOfExperience.toString()
-                }}</span>
-                {{ yearsOfExperienceText }}
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
     </div>
   </section>
 </template>
