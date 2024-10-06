@@ -87,43 +87,48 @@ export const aboutmeData: any = Object.freeze({
   buttonResumeText: 'View Resumé',
   resumeGoogleDocsLink:
     'https://docs.google.com/document/d/1GN6Ip5lOVVcvWyrBQSZdS6mzpYP9y0INtjZ0abHtg3s/edit?usp=sharing',
-  skillsTitle: 'Frontend Skills',
-  yearsOfExperienceText: 'Years of Exp.',
-  skills: [
+  skillsTitle: 'Skills',
+  categoriesList: [
     {
       id: 1,
-      text: 'HTML',
-      src: 'logo-html.svg',
-      yearsOfExperience:
-        currentDate.getFullYear() - new Date('2018').getFullYear() - yoeBuffer,
+      name: 'Languages',
+      skillsList: [
+        'JavaScript (ES6)',
+        'TypeScript',
+        'HTML',
+        'CSS / SASS',
+        'Python',
+        'SQL',
+      ],
     },
     {
       id: 2,
-      text: 'CSS',
-      src: 'logo-css.svg',
-      yearsOfExperience:
-        currentDate.getFullYear() - new Date('2018').getFullYear() - yoeBuffer,
+      name: 'Frameworks',
+      skillsList: ['Vue.js', 'Nuxt', 'React', 'WordPress', 'Jest', 'JMeter'],
     },
     {
       id: 3,
-      text: 'Vue.js',
-      src: 'logo-vue.svg',
-      yearsOfExperience:
-        currentDate.getFullYear() - new Date('2018').getFullYear() - yoeBuffer,
+      name: 'Tools',
+      skillsList: [
+        'Git & GitHub',
+        'AWS Console',
+        'Chrome DevTools',
+        'Postman',
+        'ArcGIS',
+        'MongoDB',
+      ],
     },
     {
       id: 4,
-      text: 'JavaScript',
-      src: 'logo-javascript.svg',
-      yearsOfExperience:
-        currentDate.getFullYear() - new Date('2018').getFullYear() - yoeBuffer,
-    },
-    {
-      id: 5,
-      text: 'SASS',
-      src: 'logo-sass.svg',
-      yearsOfExperience:
-        currentDate.getFullYear() - new Date('2020').getFullYear() - yoeBuffer,
+      name: 'Design & Documentation',
+      skillsList: [
+        'UML',
+        'Figma',
+        'LucidChart',
+        'Storybook',
+        'Notion',
+        'Prototyping',
+      ],
     },
   ],
 });
