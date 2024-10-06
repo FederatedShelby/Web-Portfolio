@@ -6,7 +6,7 @@ export const projectsData: any = Object.freeze({
     {
       id: 1,
       title: 'Web Portfolio',
-      imgSrc: 'logo-html.svg',
+      imgSrc: 'logo-gcp.svg',
       deploymentLink: 'https://www.google.com/',
       codeSourceLink: 'https://www.github.com/',
       skillsList: ['HTML', 'CSS', 'ThreeJS'],
