@@ -2,12 +2,17 @@
   <section id="skills" class="skills">
     <!-- section contents -->
     <div class="skills_contents">
-      <div class="label_main">Skills</div>
+      <div class="label_main" data-aos="fade-up" data-aos-once="true">
+        Skills
+      </div>
       <div class="area-categories">
         <div
-          v-for="category in categories"
+          v-for="(category, cIndex) in categories"
           :key="category.id"
           class="area-category"
+          data-aos="fade-right"
+          data-aos-once="true"
+          :data-aos-delay="cIndex * 100"
         >
           <span class="label_category">{{ category.name }}</span>
           <span
