@@ -34,7 +34,7 @@ export const skillsData: any = Object.freeze({
     },
     {
       id: 4,
-      name: 'Design & Documentation',
+      name: 'Documentation',
       skillsList: [
         'UML',
         'Figma',
