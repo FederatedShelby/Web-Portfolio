@@ -3,7 +3,7 @@
     <!-- section contents -->
     <div class="skills_contents">
       <div class="label_main" data-aos="fade-up" data-aos-once="true">
-        Skills
+        {{ sectionTitle }}
       </div>
       <div class="area-categories">
         <div
@@ -29,12 +29,14 @@
 
 <script>
 // data variables
+import { navbarData, CATEGORIES_INDEX_SKILLS } from '~/data/navbar';
 import { skillsData } from '~/data/sections/skills';
 
 export default {
   name: 'SkillsComponent',
   data() {
     return {
+      sectionTitle: navbarData.categories[CATEGORIES_INDEX_SKILLS].name,
       categories: skillsData.categoriesList,
     };
   },
