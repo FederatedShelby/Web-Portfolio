@@ -15,13 +15,15 @@
           class="project-card"
         >
           <!-- project image container -->
-          <div
+          <a
             class="card__image-container"
             data-aos="fade-up"
             data-aos-once="true"
+            :href="project.deploymentLink"
+            target="_blank"
           >
             <img :src="project.imgSrc" class="card__image" />
-          </div>
+          </a>
           <!-- project title -->
           <div class="card__title" data-aos="fade-up" data-aos-once="true">
             {{ project.title }}
