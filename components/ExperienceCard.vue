@@ -1,5 +1,5 @@
 <template>
-  <div class="card-main">
+  <div class="card-main" @mouseenter="onCardMouseEnter" @mouseleave="onCardMouseLeave">
     <!-- top of card -->
     <div class="card-top">
       <span class="title">{{ title }}</span>
@@ -8,12 +8,14 @@
     <!-- employer info -->
     <div class="card-middle">
       <div class="employer">- {{ employer }}</div>
-      <button @click="onClickExpandBtn">
-        <p>{{ isExpanded ? 'OPEN' : 'SHUT' }}</p>
-      </button>
+      <div class="expand-lock-btn" @click="onClickExpandBtn">
+        <IconLock :is-locked="keepExpanded" />
+      </div>
     </div>
     <!-- bottom of card (expandable) -->
-    <div v-show="isExpanded" class="card-bottom">
+    <div
+      class="card-bottom"
+      :class="`${ isExpanded ? 'expanded' : '' }`">
       <ul class="responsibilities-textlist">
         <li
           v-for="item in responsibilities"
@@ -25,8 +27,14 @@
 </template>
 
 <script>
+// components
+import IconLock from '~/components/IconLock.vue';
+
 export default {
   name: 'ExperienceCard',
+  components: {
+    IconLock,
+  },
   props: {
     title: {
       type: String,
@@ -52,12 +60,21 @@ export default {
   data() {
     return {
       isExpanded: false,
+      keepExpanded: false,
     };
   },
   methods: {
+    onCardMouseEnter() {
+      this.isExpanded = true;
+    },
+    onCardMouseLeave() {
+      if (!this.keepExpanded) {
+        this.isExpanded = false;
+      }
+    },
     onClickExpandBtn() {
-      this.isExpanded = !this.isExpanded;
-    }
+      this.keepExpanded = !this.keepExpanded;
+    },
   }
 };
 </script>
