@@ -2,10 +2,13 @@
   <section id="skills" class="skills">
     <!-- section contents -->
     <div class="skills_contents">
+      <!-- section title -->
       <div class="label_main" data-aos="fade-up" data-aos-once="true">
         {{ sectionTitle }}
       </div>
+      <!-- area for displaying categories + skills -->
       <div class="area-categories">
+        <!-- horizontally render categories -->
         <div
           v-for="(category, cIndex) in categories"
           :key="category.id"
@@ -14,7 +17,9 @@
           data-aos-once="true"
           :data-aos-delay="cIndex * 100"
         >
+          <!-- category name -->
           <span class="label_category">{{ category.name }}</span>
+          <!-- vertically render skills under category -->
           <span
             v-for="skill in category.skillsList"
             :key="skill"
