@@ -6,6 +6,7 @@
     <Navbar />
     <!-- sections -->
     <AboutMe />
+    <Skills />
     <Experience />
     <Certifications />
     <Projects />
@@ -30,6 +31,7 @@ import FooterComponent from '~/components/Footer.vue';
 // page sections
 import Home from '~/components/sections/HomeSection.vue';
 import AboutMe from '~/components/sections/AboutMeSection.vue';
+import Skills from '~/components/sections/SkillsSection.vue';
 import Experience from '~/components/sections/ExperienceSection.vue';
 import Certifications from '~/components/sections/CertificationsSection.vue';
 import Projects from '~/components/sections/ProjectsSection.vue';
@@ -43,6 +45,7 @@ export default Vue.extend({
     FooterComponent,
     Home,
     AboutMe,
+    Skills,
     Experience,
     Certifications,
     Projects,

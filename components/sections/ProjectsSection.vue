@@ -1,48 +1,56 @@
 <template>
   <section id="projects" class="projects">
-    <!-- section title -->
-    <h2 class="title" data-aos="flip-up">
-      {{ sectionTitle }}
-      <div class="title-decoration" />
-    </h2>
-    <!-- projects area -->
-    <div class="projects-cards-list">
-      <!-- projects base component -->
-      <div
-        v-for="project in projectsList"
-        :key="project.id"
-        class="project-card"
-      >
-        <!-- project image container -->
+    <!-- section contents -->
+    <div class="projects_contents">
+      <!-- section title -->
+      <h2 class="label_main" data-aos="fade-up" data-aos-once="true">
+        {{ sectionTitle }}
+      </h2>
+      <!-- projects area -->
+      <div class="projects-cards-list">
+        <!-- projects base component -->
         <div
-          class="card__image-container"
-          data-aos="fade-up"
-          data-aos-once="true"
+          v-for="project in projectsList"
+          :key="project.id"
+          class="project-card"
         >
-          <img :src="project.imgSrc" class="card__image" />
-        </div>
-        <!-- project title -->
-        <div class="card__title" data-aos="fade-up" data-aos-once="true">
-          {{ project.title }}
-        </div>
-        <!-- project skills list -->
-        <div class="card__skills-list" data-aos="fade-up" data-aos-once="true">
-          <div
-            v-for="skill in project.skillsList"
-            :key="skill"
-            class="card__skill"
+          <!-- project image container -->
+          <a
+            class="card__image-container"
+            data-aos="fade-up"
+            data-aos-once="true"
+            :href="project.deploymentLink"
+            target="_blank"
           >
-            {{ skill }}
+            <img :src="project.imgSrc" class="card__image" />
+          </a>
+          <!-- project title -->
+          <div class="card__title" data-aos="fade-up" data-aos-once="true">
+            {{ project.title }}
           </div>
-        </div>
-        <!-- deployment, code source links -->
-        <div class="card__links-list" data-aos="fade-up" data-aos-once="true">
-          <a :href="project.deploymentLink" target="_blank" class="card__link"
-            >View Project</a
+          <!-- project skills list -->
+          <div
+            class="card__skills-list"
+            data-aos="fade-up"
+            data-aos-once="true"
           >
-          <a :href="project.codeSourceLink" target="_blank" class="card__link"
-            >View Code</a
-          >
+            <div
+              v-for="skill in project.skillsList"
+              :key="skill"
+              class="card__skill"
+            >
+              {{ skill }}
+            </div>
+          </div>
+          <!-- deployment, code source links -->
+          <div class="card__links-list" data-aos="fade-up" data-aos-once="true">
+            <a :href="project.deploymentLink" target="_blank" class="card__link"
+              >View Project</a
+            >
+            <a :href="project.codeSourceLink" target="_blank" class="card__link"
+              >View Code</a
+            >
+          </div>
         </div>
       </div>
     </div>
