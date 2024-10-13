@@ -1,5 +1,9 @@
 <template>
-  <div class="card-main" @mouseenter="onCardMouseEnter" @mouseleave="onCardMouseLeave">
+  <div
+    class="card-main"
+    @mouseenter="onCardMouseEnter"
+    @mouseleave="onCardMouseLeave"
+  >
     <!-- top of card -->
     <div class="card-top">
       <span class="title">{{ title }}</span>
@@ -13,14 +17,9 @@
       </div>
     </div>
     <!-- bottom of card (expandable) -->
-    <div
-      class="card-bottom"
-      :class="`${ isExpanded ? 'expanded' : '' }`">
+    <div class="card-bottom" :class="`${isExpanded ? 'expanded' : ''}`">
       <ul class="responsibilities-textlist">
-        <li
-          v-for="item in responsibilities"
-          :key="item"
-        >{{ item }}</li>
+        <li v-for="item in responsibilities" :key="item">{{ item }}</li>
       </ul>
     </div>
   </div>
@@ -55,7 +54,7 @@ export default {
     responsibilities: {
       type: Array,
       default: () => [],
-    }
+    },
   },
   data() {
     return {
@@ -75,7 +74,7 @@ export default {
     onClickExpandBtn() {
       this.keepExpanded = !this.keepExpanded;
     },
-  }
+  },
 };
 </script>
 

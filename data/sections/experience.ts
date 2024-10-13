@@ -23,7 +23,7 @@ export const experienceData: any = Object.freeze({
       endDate: 'Dec 2019',
       responsibilitiesList: [
         'Created GUI features to integrate with CLI-based product for visualized implementation of custom protocols in enabling device interactions for IoT at the edge.',
-        'Fixed bugs and pushed code deliverables for GUI to reduce product knowledge training and development.'
+        'Fixed bugs and pushed code deliverables for GUI to reduce product knowledge training and development.',
       ],
     },
     {

@@ -5,7 +5,7 @@
     height="18"
     alt="lock-icon"
     loading="lazy"
-  >
+  />
 </template>
 
 <script>
@@ -18,7 +18,7 @@ export default {
     isLocked: {
       type: Boolean,
       default: false,
-    }
+    },
   },
   computed: {
     ...mapState({
@@ -28,8 +28,10 @@ export default {
       if (this.isLocked) {
         return this.isDarkMode ? 'icon-lock__dark.svg' : 'icon-lock__light.svg';
       }
-      return this.isDarkMode ? 'icon-unlock__dark.svg' : 'icon-unlock__light.svg';
-    }
-  }
+      return this.isDarkMode
+        ? 'icon-unlock__dark.svg'
+        : 'icon-unlock__light.svg';
+    },
+  },
 };
 </script>
