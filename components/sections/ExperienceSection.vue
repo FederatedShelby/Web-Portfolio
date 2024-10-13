@@ -1,28 +1,25 @@
 <template>
   <section id="experience" class="experience">
-    <!-- section title -->
-    <h2 class="title" data-aos="flip-up">
-      {{ sectionTitle }}
-      <div class="title-decoration" />
-    </h2>
-    <!-- experience area -->
-    <div class="experience-cards-list" data-aos="fade-up" data-aos-once="true">
-      <!-- experience cards -->
-      <div
-        v-for="exp in reversedExperienceList"
-        :key="exp.id"
-        class="experience-card"
-      >
-        <!-- experience card text container -->
-        <div class="card__text-container">
-          <div class="card-text--role-title">{{ exp.roleTitle }}</div>
-          <div class="card-text--employer-name">
-            {{ '@ ' + exp.employerName }}
-          </div>
-          <div class="card-text--date-range">
-            {{ exp.startDate + ' ~ ' + exp.endDate }}
-          </div>
-        </div>
+    <!-- section contents -->
+    <div class="experience_contents">
+      <div class="label_main" data-aos="fade-up" data-aos-once="true">
+        {{ sectionTitle }}
+      </div>
+      <!-- cards area -->
+      <div class="cards-area">
+        <ExperienceCard
+          v-for="(exp, eIndex) in reversedExperienceList"
+          :key="exp.id"
+          data-aos="fade-up"
+          data-aos-once="true"
+          :data-aos-delay="eIndex * 100"
+          :title="exp.roleTitle"
+          :employer="exp.employerName"
+          :start-date="exp.startDate"
+          :end-date="exp.endDate"
+          :responsibilities="exp.responsibilitiesList"
+          class="mb-3"
+        />
       </div>
     </div>
   </section>
@@ -33,8 +30,14 @@
 import { navbarData, CATEGORIES_INDEX_EXPERIENCE } from '~/data/navbar';
 import { experienceData } from '~/data/sections/experience';
 
+// components
+import ExperienceCard from '~/components/ExperienceCard.vue';
+
 export default {
   name: 'ExperienceComponent',
+  components: {
+    ExperienceCard,
+  },
   data() {
     return {
       sectionTitle: navbarData.categories[CATEGORIES_INDEX_EXPERIENCE].name,

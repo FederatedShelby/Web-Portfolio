@@ -1,38 +1,40 @@
 <template>
   <section id="certifications" class="certifications">
-    <!-- section title -->
-    <h2 class="title" data-aos="flip-up">
-      {{ sectionTitle }}
-      <div class="title-decoration" />
-    </h2>
-    <!-- certifications area -->
-    <div class="certifications-cards-list">
-      <!-- certification cards -->
-      <div
-        v-for="cert in certificationsList"
-        :key="cert.id"
-        class="certifications-card"
-        data-aos="fade-up"
-        data-aos-once="true"
-        @click="onClickCertificationCard(cert.certificationLink)"
-      >
-        <!-- image container -->
-        <div class="card__image-container">
-          <img
-            :src="cert.imageSrc"
-            class="card__image"
-            height="200"
-            width="200"
-            loading="lazy"
-          />
-        </div>
-        <!-- certification text info -->
-        <div class="card__text-container">
-          <div class="card-text--cert-name">
-            {{ cert.certificationName }}
+    <!-- section contents -->
+    <div class="certifications_contents">
+      <!-- section title -->
+      <h2 class="label_main" data-aos="fade-up" data-aos-once="true">
+        {{ sectionTitle }}
+      </h2>
+      <!-- certifications area -->
+      <div class="certifications-cards-list">
+        <!-- certification cards -->
+        <div
+          v-for="cert in certificationsList"
+          :key="cert.id"
+          class="certifications-card"
+          data-aos="fade-up"
+          data-aos-once="true"
+          @click="onClickCertificationCard(cert.certificationLink)"
+        >
+          <!-- image container -->
+          <div class="card__image-container">
+            <img
+              :src="cert.imageSrc"
+              class="card__image"
+              height="200"
+              width="200"
+              loading="lazy"
+            />
           </div>
-          <div class="card-text--date-range">
-            {{ cert.startDate + ' ~ ' + cert.endDate }}
+          <!-- certification text info -->
+          <div class="card__text-container">
+            <div class="card-text--cert-name">
+              {{ cert.certificationName }}
+            </div>
+            <div class="card-text--date-range">
+              {{ cert.startDate + ' ~ ' + cert.endDate }}
+            </div>
           </div>
         </div>
       </div>
