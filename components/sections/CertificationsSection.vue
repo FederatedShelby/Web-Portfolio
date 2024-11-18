@@ -33,7 +33,7 @@
               {{ cert.certificationName }}
             </div>
             <div class="card-text--date-range">
-              {{ cert.startDate + ' ~ ' + cert.endDate }}
+              {{ cert.dateText }}
             </div>
           </div>
         </div>
